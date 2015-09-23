@@ -24,3 +24,6 @@ react
 skeleton:skeleton
 kadira:flow-router
 kadira:react-layout
+accounts-base
+accounts-password
+kevohagan:sweetalert
