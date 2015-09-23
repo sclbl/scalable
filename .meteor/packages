@@ -21,3 +21,6 @@ check
 audit-argument-checks
 jag:pince
 react
+skeleton:skeleton
+kadira:flow-router
+kadira:react-layout
