@@ -4,6 +4,14 @@ Meteor.publish(null, function () {
   }
 });
 
+Meteor.publish('modules', function () {
+  if (this.userId) {
+    return Modules.find({}, { sort: { name: 1 } });
+  } else {
+    return [];
+  }
+});
+
 // These publications can only be accessed when the current user is an administrator
 Meteor.publish('users', function () {
   if (this.userId) {

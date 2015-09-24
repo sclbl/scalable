@@ -19,7 +19,7 @@ SignIn = React.createClass({
         if (error) {
           sweetAlert({ title: 'An error occurred', text: error.reason, timer: 2000, showConfirmButton: false });
         } else {
-          FlowRouter.go('home');
+          FlowRouter.go('workspace');
         }
       });
     }

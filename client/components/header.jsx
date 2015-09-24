@@ -13,13 +13,11 @@ Header = React.createClass({
   },
 
   render() {
-    const homePath = FlowRouter.path('home');
-
     return (
       <header className="main-header">
         <div className="container">
           <ul>
-            <li><a href={homePath}>Scalable</a></li>
+            <li><a href={FlowRouter.path('workspace')}>Scalable</a></li>
             {this.data.currentUser ? (
               <div>
                 <li className="sign-out u-pull-right">
