@@ -25,7 +25,7 @@ UsersIndex = React.createClass({
                     </tr>
                   </thead>
                   <tbody>
-                    {this.data.users.map(function(user, iterator) {
+                    {this.data.users.map((user, iterator) => {
                       return (
                         <tr key={iterator}>
                           <td>{user.username}</td>
