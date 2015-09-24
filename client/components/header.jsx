@@ -1,11 +1,15 @@
 Header = React.createClass({
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    return {
+      currentUser: Meteor.user()
+    };
+  },
+
   signOut() {
     Meteor.logout();
     FlowRouter.go('signIn');
-  },
-
-  emailAddress() {
-    return Meteor.user() && Meteor.user().emails && Meteor.user().emails[0].address
   },
 
   render() {
@@ -16,7 +20,7 @@ Header = React.createClass({
         <div className="container">
           <ul>
             <li><a href={homePath}>Scalable</a></li>
-            {Meteor.userId() ? (
+            {this.data.currentUser ? (
               <div>
                 <li className="sign-out u-pull-right">
                   <button type="button" onClick={this.signOut}>
@@ -24,7 +28,7 @@ Header = React.createClass({
                   </button>
                 </li>
                 <li className="u-pull-right">
-                  <span>{this.emailAddress()}</span>
+                  <span>{this.data.currentUser.emails[0].address}</span>
                 </li>
               </div>
             ) : null}
