@@ -27,6 +27,11 @@ Header = React.createClass({
                     <i className="fa fa-power-off fa-lg"></i>
                   </button>
                 </li>
+                {this.data.currentUser.isAdmin ? (
+                  <li className="u-pull-right">
+                    <a href={FlowRouter.path('users')}><i className="fa fa-users"></i></a>
+                  </li>
+                ) : null}
                 <li className="u-pull-right">
                   <span>{this.data.currentUser.emails[0].address}</span>
                 </li>
