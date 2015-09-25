@@ -11,6 +11,10 @@ Meteor.startup(() => {
     }
   }
 
+  // Remove all modules when starting so that we have a clean state
+  Modules.remove({});
+  logger.info('Removed all modules to start with a clean state.');
+
   // Add cluster discovery functionality
   Cluster.connect(Meteor.settings.scalable.core.settings.clusterDiscoveryUrl);
   Cluster.register('scalable');
