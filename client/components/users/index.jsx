@@ -2,14 +2,17 @@ UsersIndex = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
+    const usersSubscription = Meteor.subscribe('users');
+
     return {
-      usersSubscription: Meteor.subscribe('users'),
+      usersLoading: !usersSubscription.ready(),
+      usersSubscription: usersSubscription,
       users: Meteor.users.find({}, { sort: { username: 1 } }).fetch()
     };
   },
 
   render() {
-    if (this.data.users.length) {
+    if (!this.data.usersLoading) {
       return (
         <div className="container">
           <div className="row">

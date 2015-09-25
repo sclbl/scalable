@@ -2,14 +2,17 @@ Workspace = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
+    const modulesSubscription = Meteor.subscribe('modules');
+
     return {
-      modulesSubscription: Meteor.subscribe('modules'),
+      modulesLoading: !modulesSubscription.ready(),
+      modulesSubscription: modulesSubscription,
       modules: Modules.find({}, { sort: { name: 1 } }).fetch()
     };
   },
 
   render() {
-    if (this.data.modules.length) {
+    if (!this.data.modulesLoading) {
       return (
         <div>
           <div className="modules-list">

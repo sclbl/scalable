@@ -2,8 +2,11 @@ UpdateUser = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
+    const userSubscription = Meteor.subscribe('user', FlowRouter.getParam('_id'));
+
     return {
-      userSubscription: Meteor.subscribe('user', FlowRouter.getParam('_id')),
+      userLoading: !userSubscription.ready(),
+      userSubscription: userSubscription,
       user: Meteor.users.findOne({ _id: FlowRouter.getParam('_id') })
     };
   },
@@ -68,7 +71,7 @@ UpdateUser = React.createClass({
   },
 
   render() {
-    if (this.data.user) {
+    if (!this.data.userLoading) {
       return (
         <div className="container">
           <div className="row">
