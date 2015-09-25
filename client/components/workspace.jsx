@@ -29,7 +29,7 @@ Workspace = React.createClass({
                         );
                       })}
                     </ol>
-                  ) : <div className="alert info">There are no modules installed yet</div> }
+                  ) : <p className="text-center">There are no modules installed yet</p> }
                 </div>
               </div>
             </div>
