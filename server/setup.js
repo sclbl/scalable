@@ -10,4 +10,8 @@ Meteor.startup(() => {
       logger.error('An error occurred while creating the admin user.');
     }
   }
+
+  // Add cluster discovery functionality
+  Cluster.connect(Meteor.settings.scalable.core.settings.clusterDiscoveryUrl);
+  Cluster.register('scalable');
 });
