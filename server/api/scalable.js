@@ -1,3 +1,4 @@
+// Methods
 Meteor.methods({
   'scalable.registerModule': (module) => {
     check(module, {
