@@ -1,12 +1,16 @@
 // Methods
 Meteor.methods({
-  'scalable.registerModule': (module) => {
+  'scalable.registerModule': (module, secretKey) => {
     check(module, {
       name: String,
       developer: String,
       rootUrl: String
     });
+    check(secretKey, String);
 
+    if (secretKey !== Meteor.settings.scalable.core.settings.secretKey) {
+      throw new Meteor.Error(401, 'Your module needs to authorize correctly to perform this action');
+    }
     if (!module.name) {
       throw new Meteor.Error(422, 'Name should not be blank');
     }

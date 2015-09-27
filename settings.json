@@ -2,7 +2,8 @@
   "scalable": {
     "core": {
       "settings": {
-        "clusterDiscoveryUrl": "mongodb://host:port/db"
+        "clusterDiscoveryUrl": "mongodb://host:port/db",
+        "secretKey": "XXX"
       }
     }
   }
