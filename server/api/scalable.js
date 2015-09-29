@@ -34,7 +34,7 @@ Meteor.methods({
     );
 
     if (_id) {
-      logger.info(`Module ${identifier} successfully (re) registered`);
+      logger.info(`Module ${identifier} successfully (re)registered`);
     } else {
       const errorMessage = `Error while registering the module ${identifier}`;
       logger.error(errorMessage);
