@@ -11,6 +11,16 @@ Workspace = React.createClass({
     };
   },
 
+  getInitialState() {
+    return {
+      selectedModuleId: ''
+    }
+  },
+
+  selectModule(module) {
+    this.setState({ selectedModuleId: module._id });
+  },
+
   render() {
     if (!this.data.modulesLoading) {
       return (
@@ -24,7 +34,7 @@ Workspace = React.createClass({
                       {this.data.modules.map((module, iterator) => {
                         return (
                           <li key={iterator}>
-                            <a href={module.rootUrl} target="module" className="button">{module.name}</a>
+                            <a href={module.rootUrl} target="module" className={this.state.selectedModuleId === module._id ? 'button is-selected' : 'button'} onClick={this.selectModule.bind(this, module)}>{module.name}</a>
                           </li>
                         );
                       })}
