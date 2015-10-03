@@ -24,6 +24,8 @@ An admin user will be created with the following credentials:
 E-Mail: admin@sclbl.com
 Password: 12345678
 
+**Note: Change the password as soon as possible!**
+
 After that pick a module (e.g. the [Todos module](http://github.com/sclbl/scalable-todos)) and run this module separately on another port.
 It will register itself as a Scalable module and should be visible in the workspace after a few seconds.
 
