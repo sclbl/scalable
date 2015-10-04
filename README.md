@@ -1,6 +1,8 @@
 # Scalable
 Scalable is a modular business software solution.
 
+![Scalable Screenshot](screenshot-1.png)
+
 In Scalable you can add / remove so called modules which provide business related functionality such as:
 
 - CRM
