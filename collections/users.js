@@ -79,6 +79,9 @@ Meteor.methods({
     if (!Meteor.user().isAdmin) {
       throw new Meteor.Error(403, 'You need to be an administrator to call this method');
     }
+    if (user._id === Meteor.userId()) {
+      throw new Meteor.Error(422, 'Please use your profile settings page to change the password');
+    }
     if (!user._id) {
       throw new Meteor.Error(422, 'The users id should not be blank');
     }
