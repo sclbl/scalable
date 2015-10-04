@@ -31,7 +31,7 @@ Header = React.createClass({
                   </li>
                 ) : null}
                 <li className="u-pull-right">
-                  <span>{this.data.currentUser.emails[0].address}</span>
+                  <a className="email" href={FlowRouter.path('account')}>{this.data.currentUser.emails[0].address}</a>
                 </li>
               </div>
             ) : null}
