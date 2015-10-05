@@ -24,6 +24,7 @@ e.g. `meteor --settings settings.json --port 3000`
 An admin user will be created with the following credentials:
 
 E-Mail: admin@sclbl.com
+
 Password: 12345678
 
 **Note: Change the password as soon as possible!**
