@@ -28,10 +28,10 @@ Header = React.createClass({
                 {this.data.currentUser.isAdmin ? (
                   <div>
                     <li className="u-pull-right">
-                      <a href={FlowRouter.path('permissions')}><i className="fa fa-lock"></i></a>
+                      <a href={FlowRouter.path('permissions')}><i className="fa fa-lock fa-lg"></i></a>
                     </li>
                     <li className="u-pull-right">
-                      <a href={FlowRouter.path('users')}><i className="fa fa-users"></i></a>
+                      <a href={FlowRouter.path('users')}><i className="fa fa-users fa-lg"></i></a>
                     </li>
                   </div>
                 ) : null}
