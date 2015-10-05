@@ -114,5 +114,33 @@ Meteor.methods({
     }
 
     Meteor.users.remove({ _id: user._id});
+  },
+
+  'users.updatePermissions': (user, module) => {
+    check(user, {
+      _id: String
+    });
+    check(module, {
+      identifier: String
+    });
+
+    if (!Meteor.user()) {
+      throw new Meteor.Error(401, 'You need to be signed in to call this method');
+    }
+    if (!Meteor.user().isAdmin) {
+      throw new Meteor.Error(403, 'You need to be an administrator to call this method');
+    }
+    if (!user._id) {
+      throw new Meteor.Error(422, 'The users id should not be blank');
+    }
+    if (!module.identifier) {
+      throw new Meteor.Error(422, 'The modules identifier should not be blank');
+    }
+
+    if (Meteor.users.findOne({ _id: user._id, forbiddenModulesIdentifiers: { $in: [ module.identifier ] } })) {
+      Meteor.users.update({ _id: user._id }, { $pull: { forbiddenModulesIdentifiers: module.identifier } });
+    } else {
+      Meteor.users.update({ _id: user._id }, { $addToSet: { forbiddenModulesIdentifiers: module.identifier } });
+    }
   }
 });

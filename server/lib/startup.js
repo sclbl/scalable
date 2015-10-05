@@ -3,6 +3,7 @@ Meteor.startup(() => {
 
   Accounts.onCreateUser((options, user) => {
     user.isAdmin = !!options.isAdmin;
+    user.forbiddenModulesIdentifiers = [];
     return user;
   });
 });

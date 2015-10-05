@@ -7,7 +7,7 @@ Workspace = React.createClass({
     return {
       modulesLoading: !modulesSubscription.ready(),
       modulesSubscription: modulesSubscription,
-      modules: Modules.find({}, { sort: { name: 1 } }).fetch()
+      modules: Modules.find({ identifier: { $nin: Meteor.user().forbiddenModulesIdentifiers } }, { sort: { name: 1 } }).fetch()
     };
   },
 

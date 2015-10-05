@@ -1,6 +1,6 @@
 Meteor.publish(null, function () {
   if (this.userId) {
-    return Meteor.users.find({ _id: this.userId }, { fields: { isAdmin: 1 } });
+    return Meteor.users.find({ _id: this.userId }, { fields: { isAdmin: 1, forbiddenModulesIdentifiers: 1 } });
   }
 });
 
@@ -17,7 +17,7 @@ Meteor.publish('users', function () {
   if (this.userId) {
     const currentUser = Meteor.users.findOne(this.userId);
     if (currentUser.isAdmin) {
-      return Meteor.users.find({}, { sort: { username: 1 } });
+      return Meteor.users.find({}, { sort: { username: 1 } }, { fields: { forbiddenModulesIdentifiers: 1 } });
     } else {
       return [];
     }
