@@ -22,7 +22,7 @@ Meteor.methods({
     }
 
     // Create the identifier based on the modules developer and name
-    const identifier = `${module.developer.trim().toLowerCase()}:${module.name.trim().toLowerCase()}`;
+    const identifier = `${module.developer.trim().toLowerCase()}:${module.name.trim().toLowerCase().replace(/ /g, '-')}`;
 
     const _id = Modules.upsert(
       { identifier: identifier },
